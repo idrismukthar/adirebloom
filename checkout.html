@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Haus of Dye</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .checkout-container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    .checkout-container h2 {
+      margin-bottom: 1.5rem;
+      color: #3F51B5;
+      text-align: center;
+    }
+
+    .cart-items {
+      margin-bottom: 2rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+    }
+
+    .cart-item-name {
+      font-weight: 500;
+    }
+
+    .cart-item-price {
+      color: #D96C3B;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #3F51B5;
+    }
+
+    .btn-checkout {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.75rem 2rem;
+      background-color: #3F51B5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-checkout:hover {
+      background-color: #D96C3B;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="checkout-container">
+    <h2>Your Cart</h2>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="total" id="total-price">Total: ₦0</div>
+    <button class="btn-checkout">Proceed to Checkout</button>
+  </div>
+
+  <script>
+    const cartContainer = document.getElementById('cart-items');
+    const totalPriceDisplay = document.getElementById('total-price');
+
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let total = 0;
+      cartContainer.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        totalPriceDisplay.textContent = 'Total: ₦0';
+        return;
+      }
+
+      cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('cart-item');
+        itemDiv.innerHTML = `
+          <span class="cart-item-name">${item.name}</span>
+          <span class="cart-item-price">₦${item.price.toLocaleString()}</span>
+        `;
+        cartContainer.appendChild(itemDiv);
+        total += item.price;
+      });
+
+      totalPriceDisplay.textContent = `Total: ₦${total.toLocaleString()}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', loadCart);
+  </script>
+</body>
+</html>

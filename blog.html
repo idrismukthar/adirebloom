@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog – Haus of Dye</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FDF6ED;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .blog-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .blog-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .blog-header h1 {
+      font-size: 2.5rem;
+      color: #3F51B5;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .blog-card .content {
+      padding: 1.2rem;
+    }
+
+    .blog-card h3 {
+      color: #D96C3B;
+      margin-bottom: 0.6rem;
+    }
+
+    .blog-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      display: inline-block;
+      background-color: #3F51B5;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .read-more:hover {
+      background-color: #D96C3B;
+    }
+
+     .back-home {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #3F51B5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  transition: background 0.3s ease;
+}
+
+.back-home:hover {
+  background-color: #D96C3B;
+}
+
+.top-right-links {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 1rem;
+  z-index: 999;
+}
+
+.top-right-links a {
+  background-color: #D96C3B;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.top-right-links a:hover {
+  background-color: #3F51B5;
+}
+
+
+    @media (max-width: 768px) {
+      .blog-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-home">&larr; Home</a>
+  <div class="top-right-links">
+            <a href="contact.html">Contact</a>
+            <a href="faq.html">FAQ</a>
+            </div>
+
+  <div class="blog-container">
+    <div class="blog-header">
+      <h1>Our Blog</h1>
+      <p style="max-width: 600px; margin: auto;">
+        Discover the rich stories behind Adire, styling tips, and our journey at Haus of Dye.
+      </p>
+    </div>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="img/ireke.jpg" alt="Blog 1">
+        <div class="content">
+          <h3>The Beauty of Traditional Dyeing</h3>
+          <p>Explore how Adire dyeing methods have shaped fashion from Yoruba roots to global runways.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="img/melanin.jpg" alt="Blog 2">
+        <div class="content">
+          <h3>chronicles-of-adire</h3>
+          <p>Meet the artisans and see what goes into creating one-of-a-kind Adire textiles.</p>
+          <a href="https://hausofdye60.blogspot.com/2025/07/chronicles-of-adire.html" 
+          class="read-more">Read More</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="img/jags.jpg" alt="Blog 3">
+        <div class="content">
+          <h3>Adire in Modern Streetwear</h3>
+          <p>How Haus of Dye is blending cultural pride with urban drip for today’s generation.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="img/jags.jpg" alt="Blog 3">
+        <div class="content">
+          <h3>Adire Fabric: The Art, Culture, and Style of Nigeria</h3>
+          <p>Adire fabric is created using resist-dyeing techniques. Artisans use threads, wax, or
+             even cassava paste to create patterns on cotton cloth, then dip it in indigo dye. Once
+              it dries and the resist is removed, boom beautiful patterns appear..</p>
+          <a href="https://milesblog1942.blogspot.com/2025/07/adire-fabric-nigeria.html" 
+          class="read-more">Read More</a>
+        </div>
+      </div>
+
+        <div class="blog-card">
+            <img src="img/tally.jpg" alt="Blog 4">
+            <div class="content">
+            <h3>ADIRE TALLY</h3>
+            <p>Striking, edgy, and unapologetically bold  this fabric line fuses African heritage
+                 with a contemporary urban feel. The signature tally mark patterns overlaid 
+                 on a marble-dyed background speak volumes of identity and strength. In colors like gold, crimson,
+                 emerald, and monochrome, each piece is both a fashion statement and an art form.</p>
+            <a href="https://hausofdye60.blogspot.com/2025/07/adire-tally.html" 
+            class="read-more">Read More</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="img/batik.jpg" alt="Blog 4">
+            <div class="content">
+            <h3>BATIK VIBRANCE</h3>
+            <p>This collection is a bold celebration of minimalism and color play. Featuring smooth cotton batiks
+                adorned with cracked circle motifs, each fabric stands out in its simplicity and elegance. </p>
+            <a href="https://hausofdye60.blogspot.com/2025/07/chronicles-of-adire_13.html" 
+            class="read-more">Read More</a>
+            </div>
+        </div>
+    
+
+    </div>
+  </div>
+
+</body>
+</html>

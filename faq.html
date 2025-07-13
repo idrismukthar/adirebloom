@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQs – Haus of Dye</title>
+  <!-- Font Awesome (optional for icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FDF6ED;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #3F51B5;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      z-index: 999;
+    }
+
+    .top-right-links {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 1rem;
+      z-index: 999;
+    }
+
+    .top-right-links a {
+      background-color: #D96C3B;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 6rem auto 4rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .faq-container h1 {
+      text-align: center;
+      color: #3F51B5;
+      margin-bottom: 2rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover {
+      color: #D96C3B;
+    }
+
+    .faq-answer {
+      margin-top: 0.5rem;
+      display: none;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .faq-answer.show {
+      display: block;
+      animation: fadeIn 0.4s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active i {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 600px) {
+      .faq-container {
+        margin: 5rem 1rem 2rem;
+        padding: 1.5rem;
+      }
+
+      .faq-question {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Shortcuts -->
+  <a href="index.html" class="back-home">&larr; Home</a>
+  <!-- FAQ Content -->
+  <div class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleAnswer(this)">
+        How can I place an order? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">You can browse our collections in the Shop page and click on any item to add it to your cart. Once ready, proceed to checkout.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleAnswer(this)">
+        Do you offer international delivery? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">Yes, we ship worldwide. Shipping fees will apply depending on your country and location.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleAnswer(this)">
+        Are your Adire fabrics handmade? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">Absolutely! All our fabrics are hand-dyed by local artisans using traditional Yoruba techniques.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleAnswer(this)">
+        Can I return or exchange items? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">Yes, please see our return policy on the Shop page. Items must be returned within 7 days unused and in original condition.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleAnswer(this)">
+        Do you take bulk or custom orders? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">Yes we do! Please contact us directly via WhatsApp or email for collaborations, bulk supply, or custom pieces.</div>
+    </div>
+  </div>
+
+  <!-- JavaScript to toggle FAQ -->
+  <script>
+    function toggleAnswer(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector("i");
+
+      answer.classList.toggle("show");
+      element.classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
