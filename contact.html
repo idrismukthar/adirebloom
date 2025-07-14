@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us – Haus of Dye</title>
-  <!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Contact Us – Adire Bloom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+   <meta name="author" content="Adire Bloom Team">
+  <link rel="icon" href="img/adirebloom.png" type="image/png">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -52,6 +53,11 @@
       font-family: inherit;
     }
 
+    label {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
     button {
       background-color: #3F51B5;
       color: white;
@@ -88,7 +94,6 @@
       }
     }
 
-    /* Reuse back-home + top-right-links if needed */
     .back-home {
       position: fixed;
       top: 20px;
@@ -125,11 +130,36 @@
     .top-right-links a:hover {
       background-color: #3F51B5;
     }
+
+    .social-icons {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      font-size: 1.3rem;
+      color: #3F51B5;
+      background: #f0f0f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background-color: #D96C3B;
+      color: white;
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
-
-  <body>
 
   <!-- Navigation Shortcuts -->
   <a href="index.html" class="back-home">&larr; Home</a>
@@ -145,49 +175,30 @@
       <input type="text" placeholder="Your Name" required>
       <input type="email" placeholder="Your Email" required>
       <textarea rows="5" placeholder="Your Message" required></textarea>
+
+      <!-- Email marketing checkbox -->
+      <label>
+        <input type="checkbox" required>
+        I want to receive exclusive emails, drops and updates from Adire Bloom.
+      </label>
+
       <button type="submit">Send Message</button>
     </form>
 
     <div class="contact-info">
-      <p>Email us: <a href="mailto:hello@hausofdye.com">hello@hausofdye.com</a></p>
+      <p>Email us: <a href="mailto:hello@adirebloom.com">hello@adirebloom.com</a></p>
       <p>Follow us on social media:</p>
 
       <!-- SOCIAL ICONS -->
       <div class="social-icons">
-        <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" target="_blank" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
   </div>
-
-  <!-- Inline CSS for socials -->
-  <style>
-    .social-icons {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-    }
-
-    .social-icons a {
-      font-size: 1.5rem;
-      color: #3F51B5;
-      background: #f0f0f0;
-      padding: 0.6rem;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .social-icons a:hover {
-      background-color: #D96C3B;
-      color: white;
-      transform: scale(1.1);
-    }
-  </style>
 
 </body>
 </html>
