@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop – Adire Bloom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   <meta name="author" content="Adire Bloom Team">
+  <link rel="icon" href="img/adirebloom.png" type="image/png">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FDF6ED;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #3F51B5;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .cart-icon {
+      color: white;
+      font-size: 1.5rem;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cart-icon::after {
+      content: attr(data-count);
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: red;
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 999px;
+    }
+
+    .shop-section {
+      padding: 3rem 2rem;
+    }
+
+    .shop-section h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #3F51B5;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .product-details {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(5px);
+    }
+
+    .product-details h3 {
+      color: #3F51B5;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-details p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-weight: bold;
+      color: #D96C3B;
+      font-size: 1.1rem;
+    }
+
+    .add-cart-btn {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.5rem 1rem;
+      background-color: #3F51B5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .add-cart-btn:hover {
+      background-color: #D96C3B;
+    }
+
+    footer {
+      background-color: #3F51B5;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    footer .socials a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    footer .socials a:hover {
+      color: #D96C3B;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="img/adirebloombg.png" alt="Adire Bloom Logo"></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </nav>
+    <div class="cart-icon" onclick="window.location.href='checkout.html'" data-count="0">
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+  </header>
+
+  <section class="shop-section">
+    <h1>Shop Our Collection</h1>
+    <div class="products-grid" id="products">
+
+      <div class="product-card" data-name="Midnight Wave" data-price="9000">
+        <img src="img/abc.jpg" alt="Midnight Wave">
+        <div class="product-details">
+          <h3>Midnight Wave</h3>
+          <p>Classic hand-dyed wrap in rich indigo tones.</p>
+          <div class="product-price">₦9,000</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Sunrise Patch" data-price="8500">
+        <img src="img/bcd.jpg" alt="Sunrise Patch">
+        <div class="product-details">
+          <h3>Sunrise Patch</h3>
+          <p>Adire fabric piece inspired by morning golds.</p>
+          <div class="product-price">₦8,500</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Indigo Soul" data-price="10000">
+        <img src="img/efg.jpg" alt="Indigo Soul">
+        <div class="product-details">
+          <h3>Indigo Soul</h3>
+          <p>Modern patterns blended with deep heritage.</p>
+          <div class="product-price">₦10,000</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Tribal Flow Wrap" data-price="9500">
+        <img src="img/xyz.jpg" alt="Tribal Flow Wrap">
+        <div class="product-details">
+          <h3>Tribal Flow Wrap</h3>
+          <p>Bold colors, bold statements. Handmade in Nigeria.</p>
+          <div class="product-price">₦9,500</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Olowonla" data-price="11,500">
+        <img src="img/olowo.jpg" alt="Olowonla">
+        <div class="product-details">
+          <h3>Olowonla</h3>
+          <p>Vibrant patterns celebrating African heritage.</p>
+          <div class="product-price">₦11,500</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Heritage Elegance" data-price="12000">
+        <img src="img/heri.jpg" alt="Heritage Elegance">
+        <div class="product-details">
+          <h3>Heritage Elegance</h3>
+          <p>Timeless designs that tell a story.</p>
+          <div class="product-price">₦12,000</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+
+      <div class="product-card" data-name="Cultural Essence" data-price="10500">
+        <img src="img/cult.jpg" alt="Cultural Essence">
+        <div class="product-details">
+          <h3>Cultural Essence</h3>
+          <p>Embrace the spirit of tradition with this unique piece.</p>
+          <div class="product-price">₦10,500</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Adire Luxe" data-price="13000">
+        <img src="img/luxe.jpg" alt="Adire Luxe">
+        <div class="product-details">
+          <h3>Adire Luxe</h3>
+          <p>Luxury meets tradition in this exquisite fabric.</p>
+          <div class="product-price">₦13,000</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Lekki crave" data-price="13000">
+        <img src="img/lekki.jpg" alt="Lekki crave">
+        <div class="product-details">
+          <h3>Lekki crave</h3>
+          <p>Luxury meets tradition in this exquisite fabric.</p>
+          <div class="product-price">₦13,000</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Fash" data-price="13000">
+        <img src="img/fash.jpg" alt="Fash">
+        <div class="product-details">
+          <h3>Fash</h3>
+          <p>Fashion meets tradition in an elegant blend.</p>
+          <div class="product-price">₦13,000</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Adire Bloom. All rights reserved.</p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const cart = [];
+    const cartIcon = document.querySelector('.cart-icon');
+
+    document.querySelectorAll('.add-cart-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const card = this.closest('.product-card');
+        const name = card.getAttribute('data-name');
+        const price = parseInt(card.getAttribute('data-price'));
+        cart.push({ name, price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        cartIcon.setAttribute('data-count', cart.length);
+      });
+    });
+
+    // Load cart count from storage if exists
+    const stored = JSON.parse(localStorage.getItem('cart')) || [];
+    if (stored.length > 0) {
+      cart.push(...stored);
+      cartIcon.setAttribute('data-count', cart.length);
+    }
+  </script>
+</body>
+</html>
