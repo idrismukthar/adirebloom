@@ -1,112 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - Adire Bloom</title>
-  <link rel="stylesheet" href="css/style.css">
-   <meta name="author" content="Adire Bloom Team">
-  <link rel="icon" href="img/adirebloom.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout – Adire Bloom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    .checkout-container {
-      max-width: 800px;
-      margin: 3rem auto;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FDF6ED;
+      margin: 0;
       padding: 2rem;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
     }
 
-    .checkout-container h2 {
-      margin-bottom: 1.5rem;
+    h1 {
       color: #3F51B5;
       text-align: center;
-    }
-
-    .cart-items {
       margin-bottom: 2rem;
     }
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
       border-bottom: 1px solid #ddd;
-      padding: 1rem 0;
     }
 
-    .cart-item-name {
-      font-weight: 500;
-    }
-
-    .cart-item-price {
-      color: #D96C3B;
-    }
-
-    .total {
-      text-align: right;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #3F51B5;
-    }
-
-    .btn-checkout {
-      display: block;
-      margin: 2rem auto 0;
-      padding: 0.75rem 2rem;
+    th {
       background-color: #3F51B5;
       color: white;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
     }
 
-    .btn-checkout:hover {
+    .actions button, .clear-btn, .place-order-btn {
+      background: #3F51B5;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .actions button:hover, .clear-btn:hover, .place-order-btn:hover {
       background-color: #D96C3B;
+    }
+
+    .order-form {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .order-form input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .order-confirmation {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #d7ffd7;
+      border: 1px solid #3F51B5;
+      display: none;
     }
   </style>
 </head>
 <body>
+  <h1>Your Cart</h1>
 
-  <div class="checkout-container">
-    <h2>Your Cart</h2>
-    <div class="cart-items" id="cart-items"></div>
-    <div class="total" id="total-price">Total: ₦0</div>
-    <button class="btn-checkout">Proceed to Checkout</button>
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Size</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div style="margin-top: 1rem; text-align: right">
+    <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
   </div>
 
+  <div class="order-form">
+    <h2>Place Order</h2>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="fakeAddress" placeholder="Enter a fake address (just for fun)" required>
+    <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+  </div>
+
+  <div class="order-confirmation" id="order-confirmation"></div>
+
   <script>
-    const cartContainer = document.getElementById('cart-items');
-    const totalPriceDisplay = document.getElementById('total-price');
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    function loadCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    function renderCart() {
+      const tbody = document.querySelector("#cart-table tbody");
+      tbody.innerHTML = "";
       let total = 0;
-      cartContainer.innerHTML = '';
-
-      if (cart.length === 0) {
-        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
-        totalPriceDisplay.textContent = 'Total: ₦0';
-        return;
-      }
-
-      cart.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.classList.add('cart-item');
-        itemDiv.innerHTML = `
-          <span class="cart-item-name">${item.name}</span>
-          <span class="cart-item-price">₦${item.price.toLocaleString()}</span>
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.size || "-"}</td>
+          <td>${item.qty}</td>
+          <td>₦${item.price}</td>
+          <td>₦${itemTotal}</td>
+          <td class="actions"><button onclick="removeItem(${index})">Remove</button></td>
         `;
-        cartContainer.appendChild(itemDiv);
-        total += item.price;
+        tbody.appendChild(row);
       });
-
-      totalPriceDisplay.textContent = `Total: ₦${total.toLocaleString()}`;
+      const totalRow = document.createElement("tr");
+      totalRow.innerHTML = `<td colspan="4" style="text-align:right;font-weight:bold">Grand Total:</td><td colspan="2">₦${total}</td>`;
+      tbody.appendChild(totalRow);
     }
 
-    window.addEventListener('DOMContentLoaded', loadCart);
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function clearCart() {
+      if(confirm("Are you sure you want to clear the cart?")) {
+        cart = [];
+        localStorage.removeItem("cart");
+        renderCart();
+      }
+    }
+
+    function placeOrder() {
+      const name = document.getElementById("name").value;
+      const fakeAddress = document.getElementById("fakeAddress").value;
+      if (!name || !fakeAddress) return alert("Fill all fields!");
+
+      const orderCode = Math.random().toString(36).substr(2, 9).toUpperCase();
+      document.getElementById("order-confirmation").style.display = "block";
+      document.getElementById("order-confirmation").innerHTML = `
+        <h3>🎉 Thank you, ${name}!</h3>
+        <p>Your fake order is on the way to <strong>${fakeAddress}</strong> 😂</p>
+        <p>Tracking Code: <strong>${orderCode}</strong></p>
+        <p>You can now close this page or keep shopping.</p>
+      `;
+      clearCart();
+    }
+
+    renderCart();
   </script>
 </body>
 </html>
